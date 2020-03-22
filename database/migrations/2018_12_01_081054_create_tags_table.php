@@ -14,19 +14,20 @@ class CreateTagsTable extends Migration
     public function up()
     {
         Schema::create('tags', function (Blueprint $table) {
-            $table->increments('id');
+            $table->id('id');
             $table->timestamps();
             $table->string('name')->unique();
         });
 
-        Schema::create('tag_taggable', function (Blueprint $table) {
-            $table->unsignedInteger('tag_id');
-            $table->morphs('taggable');
+        Schema::create('model_tag', function (Blueprint $table) {
+            $table->unsignedBigInteger('tag_id');
+            $table->morphs('model');
 
             $table->foreign('tag_id')
                 ->references('id')
                 ->on('tags')
                 ->onDelete('cascade');
+            $table->unique(['tag_id', 'model_id', 'model_type']);
         });
     }
 

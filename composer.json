@@ -9,21 +9,22 @@
         }
     ],
     "require": {
-        "php": "^7.2"
+        "php": "^7.4",
+        "illuminate/database": "^7.0",
+        "illuminate/support": "^7.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.1"
     },
     "autoload": {
         "psr-4": {
-            "Aammui\\LaravelTaggableServiceProvider\\": "src"
+            "Aammui\\LaravelTaggable\\": "src"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Aammui\\LaravelTaggableServiceProvider\\Tests\\": "tests"
+            "Aammui\\LaravelTaggable\\Tests\\": "tests"
         }
-    },
-    "require-dev": {
-        "orchestra/testbench": "^4.0",
-        "phpunit/phpunit": "^9.0"
     },
     "extra": {
         "laravel": {

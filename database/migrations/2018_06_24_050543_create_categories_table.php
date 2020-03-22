@@ -14,7 +14,7 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
+            $table->id('id');
             $table->timestamps();
             $table->string('name');
             $table->string('slug')->unique();
@@ -23,8 +23,8 @@ class CreateCategoriesTable extends Migration
             $table->enum('status', ['Active', 'Inactive'])->default('Active');
         });
 
-        Schema::create('taggable_category', function (Blueprint $table) {
-            $table->unsignedInteger('category_id');
+        Schema::create('category_model', function (Blueprint $table) {
+            $table->unsignedBigInteger('category_id');
             $table->morphs('model');
             $table->unique(['category_id', 'model_id', 'model_type']);
         });

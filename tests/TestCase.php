@@ -1,9 +1,10 @@
 <?php
 
-namespace Aammui\DDD\Tests;
+namespace Aammui\LaravelTaggable\Tests;
 
 use Aammui\LaravelTaggable\LaravelTaggableServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
+use Illuminate\Database\Schema\Blueprint;
 
 class TestCase extends BaseTestCase
 {
@@ -51,10 +52,9 @@ class TestCase extends BaseTestCase
      */
     protected function setUpDatabase($app)
     {
-        $app['db']->connection()->getSchemaBuilder()->create('Posts', function (Blueprint $table) {
+        $app['db']->connection()->getSchemaBuilder()->create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->softDeletes();
         });
 
         require_once __DIR__ . "/../database/migrations/2018_06_24_050543_create_categories_table.php";
